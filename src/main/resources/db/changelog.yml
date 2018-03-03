@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - preConditions:
+    - runningAs:
+        username: richard
+
+  - changeSet:
+        id: 1
+        author: richard
+        changes:
+          - createTable:
+              tableName: bon
+              columns:
+                - column:
+                    name: id
+                    type: uuid
+                    constraints:
+                      primaryKey: true
+                      nullable: false
+                - column:
+                    name: tankstellen_name
+                    type: varchar(36)
+                - column:
+                    name: datum
+                    type: date
+                    constraints:
+                      nullable: false
+                - column:
+                    name: benzin_preis
+                    type: real
+                - column:
+                    name: tank_volumen
+                    type: real
+                - column:
+                    name: end_preis
+                    type: real

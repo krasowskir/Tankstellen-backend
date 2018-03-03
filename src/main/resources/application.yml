@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    driver: org.postgresql.Driver
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/testbon
+    username: richard
+    password: test123
+
+management:
+  security:
+    enabled: false

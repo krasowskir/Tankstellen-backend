@@ -1,4 +1,4 @@
-package com.example.Tankstellenbackend.controller;
+package com.example.tankstellenbackend.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

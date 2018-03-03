@@ -1,16 +1,25 @@
-package com.example.Tankstellenbackend.model;
+package com.example.tankstellenbackend.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.UUID;
 
+@Entity
+@Table(name = "bon")
 public class Bon {
+
+    @Id
+    private UUID id;
 
     @NotEmpty
     private String tankstellenName;
 
-    private LocalDate datum;
+    private Date datum;
 
     @NotNull
     private float benzinPreis;
@@ -21,9 +30,12 @@ public class Bon {
     @NotNull
     private float endPreis;
 
+    public Bon(){}
+
     public Bon(String tankstellenName, float benzinPreis, float tankVolumen, float endPreis) {
+        this.id = UUID.randomUUID();
         this.tankstellenName = tankstellenName;
-        this.datum = LocalDate.now();
+        this.datum = Date.from(LocalDate.now().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
         this.benzinPreis = benzinPreis;
         this.tankVolumen = tankVolumen;
         this.endPreis = endPreis;
@@ -37,11 +49,11 @@ public class Bon {
         this.tankstellenName = tankstellenName;
     }
 
-    public LocalDate getDatum() {
+    public Date getDatum() {
         return datum;
     }
 
-    public void setDatum(LocalDate datum) {
+    public void setDatum(Date datum) {
         this.datum = datum;
     }
 
@@ -67,5 +79,13 @@ public class Bon {
 
     public void setEndPreis(float endPreis) {
         this.endPreis = endPreis;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(){
+        this.id = UUID.randomUUID();
     }
 }

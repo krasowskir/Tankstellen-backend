@@ -1,4 +1,4 @@
-package com.example.Tankstellenbackend.model
+package com.example.tankstellenbackend.model
 
 import spock.lang.Specification
 
