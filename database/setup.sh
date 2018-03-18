@@ -1,8 +1,13 @@
 #!/bin/bash
 
-host=localhost
+host=127.0.0.1
 user=postgres
+port=5432
 
-psql -h $host -U $user < ./setupPostgresDb.sql
+container=$(docker run -d -p $port:5432 postgres_2_scripts:dev) 
+# postgres_create_db_scripts)
+echo $container
+sleep 4
+docker exec  $container /bin/bash "createDb.sh" $host  $user
 
 
