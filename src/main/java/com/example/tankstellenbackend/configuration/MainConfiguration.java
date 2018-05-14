@@ -1,6 +1,7 @@
 package com.example.tankstellenbackend.configuration;
 
 import com.example.tankstellenbackend.model.Bon;
+import com.example.tankstellenbackend.model.Tankstelle;
 import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,6 +12,7 @@ import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+import java.io.File;
 
 @Configuration
 @EnableJpaRepositories(basePackages = "com.example.tankstellenbackend")
@@ -49,6 +51,24 @@ public class MainConfiguration {
     public Bon bon(){
         Bon exampleBon = new Bon("Aral Tankstelle", (float)1.359, (float)25.7, (float)34.93);
         return exampleBon;
+    }
+
+    @Bean(name = "aral")
+    public Tankstelle tankstelleAral(){
+        Tankstelle aral = new Tankstelle("Aral", new File("classpath:images/aral.jpg"), "Bonn 53227");
+        return aral;
+    }
+
+    @Bean(name = "esso")
+    public Tankstelle tankstelleEsso(){
+        Tankstelle esso = new Tankstelle("Aral", new File("classpath:images/aral.jpg"), "Bonn 53227");
+        return esso;
+    }
+
+    @Bean(name = "shell")
+    public Tankstelle tankstelleShell(){
+        Tankstelle shell = new Tankstelle("Aral", new File("classpath:images/aral.jpg"), "Bonn 53227");
+        return shell;
     }
 
     @Autowired

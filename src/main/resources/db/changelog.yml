@@ -33,3 +33,25 @@ databaseChangeLog:
                 - column:
                     name: end_preis
                     type: real
+  - changeSet:
+        id: 2
+        author: richard
+        changes:
+          - createTable:
+              tableName: tankstelle
+              columns:
+                - column:
+                    name: id
+                    type: uuid
+                    constraints:
+                      primaryKey: true
+                      nullable: false
+                - column:
+                    name: name
+                    type: varchar(36)
+                - column:
+                    name: picture
+                    type: bytea
+                - column:
+                    name: address
+                    type: varchar(36)

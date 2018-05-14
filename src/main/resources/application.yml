@@ -1,3 +1,9 @@
+logging:
+ level:
+  root: INFO
+  org:
+   springframework: INFO
+
 spring:
   datasource:
     driver: org.postgresql.Driver
