@@ -1,7 +1,10 @@
 package com.example.tankstellenbackend.persistence;
 
-/**
- * Created by rkraso on 19.04.18.
- */
-public interface Tankstellen {
+
+import com.example.tankstellenbackend.model.Tankstelle;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.UUID;
+
+public interface TankstellenRepository extends JpaRepository<Tankstelle, UUID>{
 }
