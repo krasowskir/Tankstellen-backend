@@ -2,11 +2,12 @@ package com.example.tankstellenbackend.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 import java.time.LocalDate;
-import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Entity
@@ -19,7 +20,7 @@ public class Bon {
     @NotEmpty
     private String tankstellenName;
 
-    private Date datum;
+    private LocalDate datum;
 
     @NotNull
     private float benzinPreis;
@@ -35,7 +36,7 @@ public class Bon {
     public Bon(String tankstellenName, float benzinPreis, float tankVolumen, float endPreis) {
         this.id = UUID.randomUUID();
         this.tankstellenName = tankstellenName;
-        this.datum = Date.from(LocalDate.now().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+        this.datum = LocalDate.now();
         this.benzinPreis = benzinPreis;
         this.tankVolumen = tankVolumen;
         this.endPreis = endPreis;
@@ -49,12 +50,17 @@ public class Bon {
         this.tankstellenName = tankstellenName;
     }
 
-    public Date getDatum() {
+    public LocalDate getDatum() {
         return datum;
     }
 
-    public void setDatum(Date datum) {
-        this.datum = datum;
+    public void setDatum(String datum){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        try{
+            this.datum = LocalDate.parse(datum, formatter);
+        } catch (Exception e){
+            System.out.println("Formatierungsfehler Datum ..." + datum);
+        }
     }
 
     public float getBenzinPreis() {
@@ -87,5 +93,17 @@ public class Bon {
 
     public void setId(){
         this.id = UUID.randomUUID();
+    }
+
+    @Override
+    public String toString() {
+        return "Bon{" +
+                "id=" + id +
+                ", tankstellenName='" + tankstellenName + '\'' +
+                ", datum=" + datum +
+                ", benzinPreis=" + benzinPreis +
+                ", tankVolumen=" + tankVolumen +
+                ", endPreis=" + endPreis +
+                '}';
     }
 }

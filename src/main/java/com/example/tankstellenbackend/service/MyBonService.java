@@ -4,11 +4,9 @@ package com.example.tankstellenbackend.service;
 import com.example.tankstellenbackend.model.Bon;
 import com.example.tankstellenbackend.persistence.BonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import java.util.List;
 import java.util.UUID;
@@ -64,7 +62,7 @@ public class MyBonService implements BonService{
         Bon found = findById(bon.getId().toString());
         if (found == null) throw new NotFoundException();
         found.setBenzinPreis(bon.getBenzinPreis());
-        found.setDatum(bon.getDatum());
+        found.setDatum(bon.getDatum().toString());
         found.setEndPreis(bon.getEndPreis());
         found.setTankstellenName(bon.getTankstellenName());
         found.setTankVolumen(bon.getTankVolumen());

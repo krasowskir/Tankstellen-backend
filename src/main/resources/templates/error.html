@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Ooops</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+</head>
+<body>
+    <div class="jumbotron">
+        <p class="error" th:text="${error}"/>
+        <p th:text="${message}"/>
+
+        <h3>Pfad: </h3><p class="error" th:text="${path}"/>
+        <h3>Status: </h3><p class="error" th:text="${status}"/>
+        <h3>Exception: </h3><p class="error" th:text="${exception}"/>
+        <h3>Stacktrace: </h3><p class="error" th:text="${trace}"/>
+    </div>
+</body>
+</html>

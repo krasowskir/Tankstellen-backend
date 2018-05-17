@@ -48,32 +48,32 @@ public class MainConfiguration {
     }
 
     @Bean
-    public Bon bon(){
-        Bon exampleBon = new Bon("Aral Tankstelle", (float)1.359, (float)25.7, (float)34.93);
+    public Bon bon() {
+        Bon exampleBon = new Bon("Aral Tankstelle", (float) 1.359, (float) 25.7, (float) 34.93);
         return exampleBon;
     }
 
     @Bean(name = "aral")
-    public Tankstelle tankstelleAral(){
+    public Tankstelle tankstelleAral() {
         Tankstelle aral = new Tankstelle("Aral", new File("classpath:images/aral.jpg"), "Bonn 53227");
         return aral;
     }
 
     @Bean(name = "esso")
-    public Tankstelle tankstelleEsso(){
+    public Tankstelle tankstelleEsso() {
         Tankstelle esso = new Tankstelle("Aral", new File("classpath:images/aral.jpg"), "Bonn 53227");
         return esso;
     }
 
     @Bean(name = "shell")
-    public Tankstelle tankstelleShell(){
+    public Tankstelle tankstelleShell() {
         Tankstelle shell = new Tankstelle("Aral", new File("classpath:images/aral.jpg"), "Bonn 53227");
         return shell;
     }
 
     @Autowired
     @Bean(value = "liquibase")
-    public SpringLiquibase liquibaseBean(DataSource dataSource){
+    public SpringLiquibase liquibaseBean(DataSource dataSource) {
         SpringLiquibase springLiquibase = new SpringLiquibase();
         springLiquibase.setChangeLog("classpath:db/changelog.yml");
         springLiquibase.setDataSource(dataSource);

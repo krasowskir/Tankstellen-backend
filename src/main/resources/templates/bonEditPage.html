@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"></meta>
     <title>Title</title>
@@ -7,8 +8,41 @@
 </head>
 <body>
     <div class="jumbotron">
-        <h1>Hello World</h1>
+        <h1>Bon</h1>
     </div>
+    <form class="form-horizontal" th:action="@{/bonis}" method="post" th:object="${bon}">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="tankstellen-name" th:field="${bon.tankstellenName}" placeholder="Tankstellenname..."/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Datum</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="date" id="datum" th:field="${bon.datum}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Benzinpreis</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="number" id="Preis" placeholder="€/Liter..." th:field="${bon.benzinPreis}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Tankvolumen</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="range" min="0" max="58" step="0.5" id="Tankvolumen" th:field="${bon.tankVolumen}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Endpreis</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text"  id="endpreis" placeholder="Endpreis..." th:field="${bon.endPreis}"/>
+            </div>
+        </div>
+        <button type="submit"  >Speichern</button>
+    </form>
     <script src="static/js/bootstrap.js" />
 </body>
 </html>
