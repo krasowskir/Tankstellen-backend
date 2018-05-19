@@ -27,7 +27,7 @@ public class Tankstelle {
     private String address;
 
     public Tankstelle(){
-
+        this.id = UUID.randomUUID();
     }
 
     public Tankstelle(String name, File picture, String address) {

@@ -31,7 +31,9 @@ public class Bon {
     @NotNull
     private float endPreis;
 
-    public Bon(){}
+    public Bon(){
+        this.id = UUID.randomUUID();
+    }
 
     public Bon(String tankstellenName, float benzinPreis, float tankVolumen, float endPreis) {
         this.id = UUID.randomUUID();

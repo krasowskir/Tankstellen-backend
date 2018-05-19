@@ -31,18 +31,32 @@
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Tankvolumen</label>
-            <div class="col-sm-10">
-                <input class="form-control" type="range" min="0" max="58" step="0.5" id="Tankvolumen" th:field="${bon.tankVolumen}"/>
+            <div class="form-row col-md-12">
+                <div class="col col-md-8">
+                    <input class="form-control" type="range" min="0" max="58" step="5.8" id="tankslider" onchange="updateWert()" th:field="${bon.tankVolumen}"/>
+                </div>
+                <div class="col col-md-2">
+                    <label id="volumenanzeige" />
+                </div>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Endpreis</label>
+            <label class="col-sm-2 control-label" id="Endpreis" >Endpreis</label>
             <div class="col-sm-10">
-                <input class="form-control" type="text"  id="endpreis" placeholder="Endpreis..." th:field="${bon.endPreis}"/>
+                <input class="form-control" type="text"  id="endpreis" placeholder="Endpreis..." th:field="${bon.endPreis}" readonly="true"/>
             </div>
         </div>
-        <button type="submit"  >Speichern</button>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success" >Daten abgeben</button>
+        </div>
     </form>
-    <script src="static/js/bootstrap.js" />
+    <script>
+        function updateWert(){
+        const preis = document.getElementById("Preis").value;
+        const wert = document.getElementById("tankslider").value;
+        document.getElementById("volumenanzeige").innerHTML = wert;
+        document.getElementById("endpreis").value = wert * preis;
+        }
+    </script>
 </body>
 </html>
