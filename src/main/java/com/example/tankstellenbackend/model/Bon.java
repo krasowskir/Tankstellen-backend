@@ -7,7 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -20,7 +22,8 @@ public class Bon {
     @NotEmpty
     private String tankstellenName;
 
-    private LocalDate datum;
+    @NotNull
+    private Date datum;
 
     @NotNull
     private float benzinPreis;
@@ -38,7 +41,7 @@ public class Bon {
     public Bon(String tankstellenName, float benzinPreis, float tankVolumen, float endPreis) {
         this.id = UUID.randomUUID();
         this.tankstellenName = tankstellenName;
-        this.datum = LocalDate.now();
+        this.datum = new Date();
         this.benzinPreis = benzinPreis;
         this.tankVolumen = tankVolumen;
         this.endPreis = endPreis;
@@ -52,14 +55,15 @@ public class Bon {
         this.tankstellenName = tankstellenName;
     }
 
-    public LocalDate getDatum() {
+    public Date getDatum() {
         return datum;
     }
 
     public void setDatum(String datum){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         try{
-            this.datum = LocalDate.parse(datum, formatter);
+            LocalDate tmpDatum = LocalDate.parse(datum, formatter);
+            this.datum = Date.from(tmpDatum.atStartOfDay(ZoneId.systemDefault()).toInstant());
         } catch (Exception e){
             System.out.println("Formatierungsfehler Datum ..." + datum);
         }

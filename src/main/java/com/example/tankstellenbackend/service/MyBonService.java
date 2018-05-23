@@ -66,6 +66,7 @@ public class MyBonService implements BonService{
         found.setEndPreis(bon.getEndPreis());
         found.setTankstellenName(bon.getTankstellenName());
         found.setTankVolumen(bon.getTankVolumen());
+        bonRepository.save(found);
         return found;
     }
 }

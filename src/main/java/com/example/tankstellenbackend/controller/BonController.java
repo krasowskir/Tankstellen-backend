@@ -1,15 +1,29 @@
 package com.example.tankstellenbackend.controller;
 
 import com.example.tankstellenbackend.model.Bon;
-import org.springframework.http.HttpEntity;
+import com.example.tankstellenbackend.service.BonService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.validation.Valid;
 
 @Controller
 public class BonController {
 
-    Bon bonDto = new Bon();
+    private static final Logger log = LoggerFactory.getLogger(BonController.class);
+
+    private BonService bonService;
+
+    @Autowired
+    public BonController(BonService bonService){
+        this.bonService = bonService;
+    }
 
     @RequestMapping(value = "/bons", method = RequestMethod.GET)
     public String getBonEditPage(Bon bon){
@@ -17,8 +31,15 @@ public class BonController {
     }
 
     @RequestMapping(value = "/bonis", method = RequestMethod.POST)
-    public HttpEntity<String> saveBon(Bon bon){
+    public String saveBon(@Valid Bon bon, BindingResult bindingResult, Model model){
 
-        return new HttpEntity<>(bon.toString());
+        if (bindingResult.hasErrors()){
+            log.error("Binding result hat Fehler {}", bindingResult.getAllErrors());
+            return "redirect:/bons";
+        } else {
+            bonService.add(bon);
+            model.addAttribute("createdBon", bon);
+        }
+        return "successedBon";
     }
 }
