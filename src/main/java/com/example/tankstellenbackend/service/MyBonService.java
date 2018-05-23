@@ -62,7 +62,7 @@ public class MyBonService implements BonService{
         Bon found = findById(bon.getId().toString());
         if (found == null) throw new NotFoundException();
         found.setBenzinPreis(bon.getBenzinPreis());
-        found.setDatum(bon.getDatum().toString());
+        found.setDatum(bon.getDatum());
         found.setEndPreis(bon.getEndPreis());
         found.setTankstellenName(bon.getTankstellenName());
         found.setTankVolumen(bon.getTankVolumen());
