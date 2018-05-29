@@ -1,0 +1,42 @@
+.mycontainer {
+    background-color: #062456;
+    border: 2px;
+    color: yellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 90%;
+    margin: 0;
+}
+
+.main-content {
+    background-color: pink;
+    border: 2px;
+    height: 90%;
+}
+
+.container {
+    height: 100%;
+    margin: 0;
+}
+.zweite {
+    height: 90%;
+}
+
+.brand {
+    background-color: #03193f;
+    padding-top: 0.7rem;
+}
+
+#search {
+    margin-left: 0.5rem;
+}
+
+.leiste {
+    padding: 0.7rem;
+}
+.bild2 {
+    height: 0.8rem;
+    width: 1rem;
+}
+

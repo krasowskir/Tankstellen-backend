@@ -2,61 +2,41 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"></meta>
-    <title>Title</title>
-    <link rel="stylesheet" href="css/bootstrap.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/fonts.css"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+    </style>
 </head>
 <body>
-    <div class="jumbotron">
-        <h1>Bon</h1>
+
+<div class="container">
+    <div th:replace="vertical::#meinHeader"/>
+    <div id="zweite" class="row zweite">
+        <div th:replace="vertical::#zweite"/>
+        <div class="col-lg-9" th:replace="body::#meinFormular"></div>
     </div>
-    <form class="form-horizontal" th:action="@{/bonis}" method="post" th:object="${bon}">
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Name</label>
-            <div class="col-sm-10">
-                <input class="form-control" type="text" id="tankstellen-name" th:field="${bon.tankstellenName}" placeholder="Tankstellenname..."/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Datum</label>
-            <div class="col-sm-10">
-                <input class="form-control" type="date" id="datum" th:field="${bon.datum}"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Benzinpreis</label>
-            <div class="col-sm-10">
-                <input class="form-control" type="number" id="Preis" placeholder="€/Liter..." th:field="${bon.benzinPreis}"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Tankvolumen</label>
-            <div class="form-row col-md-12">
-                <div class="col col-md-8">
-                    <input class="form-control" type="range" min="0" step="0.1" max="58" id="tankslider" onchange="updateWert()" th:field="${bon.tankVolumen}"/>
-                </div>
-                <div class="col col-md-2">
-                    <label id="volumenanzeige" />
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" >Endpreis</label>
-            <div class="col-sm-10">
-                <input class="form-control" type="text"  id="endpreis" placeholder="Endpreis..." th:field="${bon.endPreis}" readonly="true"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-success" >Daten abgeben</button>
-        </div>
-    </form>
-    <script>
+</div>
+
+
+<script>
         function updateWert(){
         const preis = document.getElementById("Preis").value;
         const wert = document.getElementById("tankslider").value;
         document.getElementById("volumenanzeige").innerHTML = wert;
         document.getElementById("endpreis").value = wert * preis;
         }
-    </script>
+
+</script>
+<script src="js/jquery-3.3.1.js"/>
+<script src="js/bootstrap.js"/>
 </body>
 </html>
