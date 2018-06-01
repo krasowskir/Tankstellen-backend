@@ -15,8 +15,6 @@
             width: 100%;
         }
 
-        ,
-
         #mychart {
             width: 400px;
             height: 200px;
@@ -33,7 +31,11 @@
         <div th:replace="vertical::#meinHeader" />
         <div id="zweite" class="row zweite">
             <div th:replace="vertical::#zweite" />
-            <div class="col-lg-9" id="mychart"></div>
+            <div class="col-md-9">
+                <div id="mychart" class="meinChart">
+
+                </div>
+            </div>
         </div>
     </div>
 
@@ -42,6 +44,37 @@
     <script src="js/highcharts.js" />
     <script type="text/javascript">
         $(document).ready(function () {
+
+            var options = {
+                chart: {
+                    type: 'column',
+                    renderTo: 'mychart'
+                },
+                title: {
+                    text: 'mein zweites chart'
+                },
+                xAxis: {
+                    id: [
+                        1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Benzinkosten'
+                    }
+                },
+                series: [{
+                    name: 'Benzinkosten Endpreis',
+                    data: [29.99, 54.80, 66.70, 43.50, 55.99, 49.99, 42.32, 58.45, 53.33, 24.99],
+                    dataLabels: {
+                        enabled: true
+                    }
+                }]
+            };
+
+            var meinChart = new Highcharts.Chart(options);
 
             $.getJSON({
                 url: "/allBons",
@@ -57,32 +90,11 @@
                     preise.push(field['endPreis']);
                 })
 
-                var options = {
-                    chart: {
-                        type: 'column',
-                        renderTo: 'mychart'
-                    },
-                    title: {
-                        text: 'mein zweites chart'
-                    },
-                    xAxis: {
-                        id: [
-                            1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-                        ],
-                        crosshair: true
-                    },
-                    yAxis: {
-                        min: 0,
-                        title: {
-                            text: 'Benzinkosten'
-                        }
-                    },
-                    series: [{
-                        name: 'Benzinkosten Endpreis',
-                        data: preise
-                        //[29.99, 54.80, 66.70, 43.50, 55.99, 49.99, 42.32, 58.45, 53.33, 24.99]
-                    }]
-                };
+                console.log(preise);
+                console.log("test:" + preise);
+                if (preise.length !== 0) {
+                    $('#mychart').highcharts().series[0].setData(preise);
+                }
                 var meinChart = new Highcharts.Chart(options);
             }
         })

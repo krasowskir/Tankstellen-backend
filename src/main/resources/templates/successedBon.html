@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8" />
-    <title>bon created successfully</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <!-- <link rel="stylesheet" href="css/fonts.css" /> -->
+    <meta charset="UTF-8" />
+    <title>Graphics</title>
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
 </head>
+
 <body>
-    <h3 th:text="${createdBon.tankstellenName}"></h3>
-    <h3 th:text="${createdBon.datum}"></h3>
-    <h3 th:text="${createdBon.benzinPreis}"></h3>
-    <h3 th:text="${createdBon.tankVolumen}"></h3>
-    <h3 th:text="${createdBon.endPreis}"></h3>
+    <div class="container">
+        <div th:replace="vertical::#meinHeader" />
+        <div id="zweite" class="row zweite">
+            <div th:replace="vertical::#zweite" />
+            <div class="col-md-9 hintergrund">
+                <div th:replace="body::#bon">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery.js" />
+    <script src="js/bootstrap.js" />
 </body>
+
 </html>

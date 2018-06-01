@@ -1,39 +1,73 @@
 .mycontainer {
-    background-color: #062456;
-    border: 2px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin: 0;
+  background-color: #062456;
+  border: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0;
 }
 
 .main-content {
-    background-color: pink;
-    border: 2px;
+  background-color: pink;
+  border: 2px;
 }
 
 .container {
-    height: 100%;
-    margin: 0;
+  height: 100%;
+  margin: 0;
 }
 .zweite {
-    min-height: 90%;
+  min-height: 90%;
 }
 
 .brand {
-    background-color: #03193f;
-    padding-top: 0.7rem;
+  background-color: #03193f;
+  padding-top: 0.7rem;
 }
 
 #search {
-    margin-left: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .leiste {
-    padding: 0.7rem;
+  padding: 0.7rem;
 }
 .bild2 {
-    height: 0.8rem;
-    width: 1rem;
+  height: 0.8rem;
+  width: 1rem;
+}
+.bonFrame {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 600px;
+  background-color: white;
+  border: solid 1px #000;
+  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 20px;
+}
+.headline {
+  font-size: 5rem;
+  align-items: center;
+}
+.hintergrund {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+}
+.erfolg {
+  position: fixed;
+  bottom: 640px;
+  right: 400px;
+  height: 40px;
+  width: 40px;
+  color: forestgreen;
 }
 
+meinChart {
+  width: 700px;
+  height: 300px;
+}
