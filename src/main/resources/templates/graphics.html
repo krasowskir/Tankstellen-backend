@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <meta charset="UTF-8" />
+    <title>Graphics</title>
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        ,
+
+        #mychart {
+            width: 400px;
+            height: 200px;
+            border: 1px solid #000;
+            padding: 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div th:replace="vertical::#meinHeader" />
+        <div id="zweite" class="row zweite">
+            <div th:replace="vertical::#zweite" />
+            <div class="col-lg-9" id="mychart"></div>
+        </div>
+    </div>
+
+    <script src="js/jquery.js" />
+    <script src="js/bootstrap.js" />
+    <script src="js/highcharts.js" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+            var options = {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'mein zweites chart'
+                },
+                xAxis: {
+                    id: [
+                        1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Benzinkosten'
+                    }
+                },
+                series: [{
+                    name: 'Benzinkosten Endpreis',
+                    data: [29.99, 54.80, 66.70, 43.50, 55.99, 49.99, 42.32, 58.45, 53.33, 24.99]
+                }]
+            };
+
+            $('#mychart').highcharts(options);
+
+            $.getJSON({
+                url: "/allBons",
+                success: auswertung
+            });
+
+            function auswertung(response ) {
+                alert("success");
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class BonController {
@@ -21,19 +22,19 @@ public class BonController {
     private BonService bonService;
 
     @Autowired
-    public BonController(BonService bonService){
+    public BonController(BonService bonService) {
         this.bonService = bonService;
     }
 
     @RequestMapping(value = "/bons", method = RequestMethod.GET)
-    public String getBonEditPage(Bon bon){
+    public String getBonEditPage(Bon bon) {
         return "bonEditPage";
     }
 
     @RequestMapping(value = "/bonis", method = RequestMethod.POST)
-    public String saveBon(@Valid Bon bon, BindingResult bindingResult, Model model){
+    public String saveBon(@Valid Bon bon, BindingResult bindingResult, Model model) {
 
-        if (bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             log.error("Binding result hat Fehler {}", bindingResult.getAllErrors());
             return "redirect:/bons";
         } else {
@@ -42,4 +43,12 @@ public class BonController {
         }
         return "successedBon";
     }
+
+    @RequestMapping(value = "/graphics")
+    public String showGraphs(Model model) {
+        List<Bon> bons = bonService.findAll();
+        model.addAttribute("bons", bons);
+        return "graphics";
+    }
+
 }

@@ -1,18 +1,15 @@
 .mycontainer {
     background-color: #062456;
     border: 2px;
-    color: yellow;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 90%;
     margin: 0;
 }
 
 .main-content {
     background-color: pink;
     border: 2px;
-    height: 90%;
 }
 
 .container {
@@ -20,7 +17,7 @@
     margin: 0;
 }
 .zweite {
-    height: 90%;
+    min-height: 90%;
 }
 
 .brand {
