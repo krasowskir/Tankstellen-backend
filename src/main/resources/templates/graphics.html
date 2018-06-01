@@ -43,41 +43,47 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-
-            var options = {
-                chart: {
-                    type: 'column'
-                },
-                title: {
-                    text: 'mein zweites chart'
-                },
-                xAxis: {
-                    id: [
-                        1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-                    ],
-                    crosshair: true
-                },
-                yAxis: {
-                    min: 0,
-                    title: {
-                        text: 'Benzinkosten'
-                    }
-                },
-                series: [{
-                    name: 'Benzinkosten Endpreis',
-                    data: [29.99, 54.80, 66.70, 43.50, 55.99, 49.99, 42.32, 58.45, 53.33, 24.99]
-                }]
-            };
-
-            $('#mychart').highcharts(options);
-
             $.getJSON({
                 url: "/allBons",
                 success: auswertung
             });
 
-            function auswertung(response ) {
-                alert("success");
+            var preise = [];
+            function auswertung(response) {
+                $.each(response, function (i, field) {
+
+                    console.log(Object.getOwnPropertyNames(field) + " " + i);
+                    console.log(field['endPreis']);
+                    preise.push(field['endPreis']);
+                })
+
+                var options = {
+                    chart: {
+                        type: 'column',
+                        renderTo: 'mychart'
+                    },
+                    title: {
+                        text: 'mein zweites chart'
+                    },
+                    xAxis: {
+                        id: [
+                            1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Benzinkosten'
+                        }
+                    },
+                    series: [{
+                        name: 'Benzinkosten Endpreis',
+                        data: preise
+                        //[29.99, 54.80, 66.70, 43.50, 55.99, 49.99, 42.32, 58.45, 53.33, 24.99]
+                    }]
+                };
+                var meinChart = new Highcharts.Chart(options);
             }
         })
     </script>

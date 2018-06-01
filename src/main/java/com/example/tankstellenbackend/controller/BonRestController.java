@@ -26,6 +26,10 @@ public class BonRestController {
     public List<Bon> getAllBons(){
         log.info("fetching all bons");
         List<Bon> bons = bonService.findAll();
+        for (Bon elem : bons){
+            log.info("bons {}", elem.getEndPreis());
+        }
+
         return bons;
     }
 }
