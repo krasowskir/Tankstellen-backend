@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/main.css" />
     <title>Title</title>
 </head>
 
@@ -64,6 +65,16 @@
         <h3 th:text="${createdBon.endPreis}"></h3>
     </div>
 
+
+    <div id="editBons" class="col-lg-9 bearbeiten" >
+        <div th:each="bon:${bons}">
+            <div th:replace="fragments/TankItem::#tankItem" ></div>
+        </div>
+        <div class="btnFooter">
+            <button type="button" class="btn btn-success">Bearbeiten</button>
+            <button type="button" class="btn btn-danger">Löschen</button>
+        </div>
+    </div>
 </body>
 
 </html>

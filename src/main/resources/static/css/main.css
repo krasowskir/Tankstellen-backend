@@ -67,7 +67,44 @@
   color: forestgreen;
 }
 
-meinChart {
+.meinChart {
   width: 700px;
   height: 300px;
 }
+
+.bearbeiten {
+    background: linear-gradient(to bottom, #023689, #095ee8);
+}
+
+.tankItem {
+    display: flex;
+    background: linear-gradient(to bottom, #8b8e91, #696b6d);
+    margin: 15px;
+    border-radius: 4px;
+    height: 3rem;
+}
+#tankItem:hover {
+    cursor: pointer;
+    border: 2px solid #45484c;
+}
+.ersterTeil {
+    justify-content: center;
+    flex-basis: 20%;
+
+}
+.zweiterTeil {
+    justify-content: center;
+    flex-basis: 50%;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+}
+.dritterTeil {
+    justify-content: center;
+    flex-basis: 20%;
+}
+.btnFooter {
+    margin-left: 3rem;
+    position: fixed;
+    bottom: 5%;
+}
+

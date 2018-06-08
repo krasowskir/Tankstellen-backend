@@ -20,11 +20,20 @@
     <div th:replace="vertical::#meinHeader"/>
     <div id="zweite" class="row zweite">
         <div th:replace="vertical::#zweite"/>
-        <div th:replace="body::#editBons" ></div>
+        <div class="col-lg-9" th:replace="body::#meinFormular"></div>
     </div>
 </div>
 
 
+<script>
+        function updateWert(){
+        const preis = document.getElementById("Preis").value;
+        const wert = document.getElementById("tankslider").value;
+        document.getElementById("volumenanzeige").innerHTML = wert;
+        document.getElementById("endpreis").value = wert * preis;
+        }
+
+</script>
 <script src="js/jquery.js"/>
 <script src="js/bootstrap.js"/>
 </body>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <title>Title</title>
+</head>
+<body>
+
+<div id="tankItem" class="tankItem">
+
+    <div class="ersterTeil">
+        <h5 th:text="${bon.tankstellenName}"/>
+    </div>
+    <div class="zweiterTeil">
+        <h5 th:text="${bon.datum}"/>
+    </div>
+    <div class="dritterTeil">
+        <h5 th:text="${bon.endPreis}"/>
+    </div>
+
+</div>
+
+</body>
+</html>

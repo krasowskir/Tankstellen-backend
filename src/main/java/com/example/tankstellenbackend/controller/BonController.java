@@ -27,8 +27,8 @@ public class BonController {
     }
 
     @RequestMapping(value = "/bons", method = RequestMethod.GET)
-    public String getBonEditPage(Bon bon) {
-        return "bonEditPage";
+    public String neuErschaffen(Bon bon) {
+        return "bonCreatePage";
     }
 
     @RequestMapping(value = "/bonis", method = RequestMethod.POST)
@@ -51,4 +51,10 @@ public class BonController {
         return "graphics";
     }
 
+    @RequestMapping(value = "/bearbeiten")
+    public String bearbeiten(Model model) {
+        List<Bon> bons = bonService.findAll();
+        model.addAttribute("bons", bons);
+        return "bonEditPage";
+    }
 }
