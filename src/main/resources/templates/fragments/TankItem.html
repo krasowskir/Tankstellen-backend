@@ -9,18 +9,16 @@
 <body>
 
 <div id="tankItem" class="tankItem">
-
-    <div class="ersterTeil">
-        <h5 th:text="${bon.tankstellenName}"/>
+    <div class="ersterTeil ausrichtung">
+        <img class="img-fluid" th:src="${'/imgs/' + bon.tankstellenName + '.png'}"/>
     </div>
-    <div class="zweiterTeil">
+    <div class="zweiterTeil ausrichtung">
         <h5 th:text="${bon.datum}"/>
     </div>
-    <div class="dritterTeil">
+    <div class="dritterTeil ausrichtung">
         <h5 th:text="${bon.endPreis}"/>
     </div>
 
 </div>
-
 </body>
 </html>
