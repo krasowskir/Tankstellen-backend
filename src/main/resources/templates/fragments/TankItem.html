@@ -2,13 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="css/bootstrap.css"/>
     <link rel="stylesheet" href="css/main.css"/>
     <title>Title</title>
 </head>
 <body>
 
-<div id="tankItem" class="tankItem">
+<a id="tankItem" class="tankItem" href="#">
     <div class="ersterTeil ausrichtung">
         <img class="img-fluid" th:src="${'/imgs/' + bon.tankstellenName + '.png'}"/>
     </div>
@@ -18,7 +17,7 @@
     <div class="dritterTeil ausrichtung">
         <h5 th:text="${bon.endPreis}"/>
     </div>
+</a>
 
-</div>
 </body>
 </html>

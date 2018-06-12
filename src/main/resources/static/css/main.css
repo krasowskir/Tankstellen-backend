@@ -1,3 +1,4 @@
+
 .mycontainer {
   background-color: #062456;
   border: 2px;
@@ -77,6 +78,7 @@
 }
 
 .tankItem {
+    color: black;
     display: flex;
     background: linear-gradient(to bottom, #8b8e91, #696b6d);
     margin: 15px;
@@ -84,12 +86,15 @@
     height: 3rem;
 }
 #tankItem:hover {
-    cursor: pointer;
-    border: 2px solid #45484c;
+    border: 2px solid black;
+    text-decoration: none;
+    color: black;
+}
+#tankItem:focus {
+    border: 5px solid pink;
 }
 .ersterTeil {
     width: 50px;
-
 }
 .zweiterTeil {
     flex-basis: 70%;
