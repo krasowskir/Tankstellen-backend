@@ -81,12 +81,11 @@
     color: black;
     display: flex;
     background: linear-gradient(to bottom, #8b8e91, #696b6d);
-    margin: 15px;
     border-radius: 4px;
     height: 3rem;
+    margin: 5px;
 }
 #tankItem:hover {
-    border: 2px solid black;
     text-decoration: none;
     color: black;
 }
@@ -127,5 +126,9 @@
     justify-content: center;
     padding: 10px;
     margin: 5px;
+}
+.meinCollapsedContent {
+    margin: 5px;
+    background-color: #e5e6e8;
 }
 
