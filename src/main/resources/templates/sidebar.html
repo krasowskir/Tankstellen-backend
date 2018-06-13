@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div  class="row zweite">
+        <div class="col-md-3 mycontainer" id="zweite">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/graphics">&Uuml;bersicht</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/bons">neu erstellen</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/bearbeiten">bearbeiten</a>
+                </li>
+            </ul>
+        </div>
+        <div th:replace="fragments/forms::#meinFormular" ></div>
+    </div>
+
+    <script src="js/jquery.js" />
+    <script src="js/bootstrap.js" />
+</body>
+
+</html>

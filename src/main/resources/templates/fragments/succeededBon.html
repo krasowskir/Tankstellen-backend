@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <body>
+        <div id="bon" class="bonFrame">
+            <img class="success erfolg" src="glyphicons/png/glyphicons-199-ok-circle.png" />
+            <div class="headline" th:text="${createdBon.tankstellenName}">
+            </div>
+            <h3 th:text="${createdBon.datum}"></h3>
+            <h3 th:text="${createdBon.benzinPreis}"></h3>
+            <h3 th:text="${createdBon.tankVolumen}"></h3>
+            <h3 th:text="${createdBon.endPreis}"></h3>
+        </div>
+    </body>
+</html>

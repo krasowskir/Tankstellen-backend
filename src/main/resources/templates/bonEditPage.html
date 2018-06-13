@@ -18,10 +18,10 @@
 <body>
 
 <div class="container">
-    <div th:replace="vertical::#meinHeader"/>
+    <div th:replace="header::#meinHeader"/>
     <div id="zweite" class="row zweite">
-        <div th:replace="vertical::#zweite"/>
-        <div th:replace="body::#editBons" ></div>
+        <div th:replace="sidebar::#zweite"/>
+        <div th:replace="fragments/editBon::#editContent" ></div>
     </div>
 </div>
 

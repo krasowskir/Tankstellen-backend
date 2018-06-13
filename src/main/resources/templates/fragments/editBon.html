@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <body>
+
+        <div id="editContent" class="col-lg-9 bearbeiten" >
+            <div class="editÜberschriftenZeile">
+                <h3 class="editÜberschrift">Bonübersicht
+                    <span class="badge badge-success" th:text="${bons.size()}" />
+                </h3>
+            </div>
+            <div th:each="bon:${bons}">
+                <div th:replace="fragments/editBon::#tankItem" ></div>
+            </div>
+            <div class="btnFooter">
+                <button type="button" id="btnEdit" class="btn btn-success disabled">Bearbeiten</button>
+                <button type="button" class="btn btn-danger">Löschen</button>
+            </div>
+        </div>
+
+        <a id="tankItem" class="tankItem" href="#">
+            <div class="ersterTeil ausrichtung">
+                <img class="img-fluid" th:src="${'/imgs/' + bon.tankstellenName + '.png'}"/>
+            </div>
+            <div class="zweiterTeil ausrichtung">
+                <h5 th:text="${bon.datum}"/>
+            </div>
+            <div class="dritterTeil ausrichtung">
+                <h5 th:text="${bon.endPreis}"/>
+            </div>
+        </a>
+    </body>
+
+</html>

@@ -17,10 +17,10 @@
 <body>
 
 <div class="container">
-    <div th:replace="vertical::#meinHeader"/>
+    <div th:replace="header::#meinHeader"/>
     <div id="zweite" class="row zweite">
-        <div th:replace="vertical::#zweite"/>
-        <div class="col-lg-9" th:replace="body::#meinFormular"></div>
+        <div th:replace="sidebar::#zweite"/>
+        <div class="col-lg-9" th:replace="fragments/forms::#meinFormular"></div>
     </div>
 </div>
 
