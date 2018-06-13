@@ -67,6 +67,11 @@
 
 
     <div id="editBons" class="col-lg-9 bearbeiten" >
+        <div class="editÜberschriftenZeile">
+            <h3 class="editÜberschrift">Bonübersicht
+                <span class="badge badge-success" th:text="${bons.size()}" />
+            </h3>
+        </div>
         <div th:each="bon:${bons}">
             <div th:replace="fragments/TankItem::#tankItem" ></div>
         </div>
