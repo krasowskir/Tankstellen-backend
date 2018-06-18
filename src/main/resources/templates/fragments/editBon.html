@@ -2,18 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <script type="text/javascript">
-        var monate = [];
-        function getMonat(month) {
-            if (monate.indexOf(month) == -1) {
-                monate.push(month);
-                return month;
-            } else {
-                return "|"
-            }
-        };
-
-    </script>
 
 </head>
 
@@ -34,19 +22,19 @@
                     </th>
                     <script th:inline="javascript">
 
-                            var idprefix = '#';
-                            var id = /*[[${bon.getId().toString()}]]*/;
-                            var monat = /*[[${bon.getMonat()}]]*/
-                            var result = getMonat(monat);
-                            $(idprefix+id).text(result);
-                        </script>
+                        var idprefix = '#';
+                        var id = /*[[${bon.getId().toString()}]]*/;
+                        var monat = /*[[${bon.getMonat()}]]*/;
+                        var result = getMonat(monat);
+                        $(idprefix + id).text(result);
+                    </script>
                     <td th:replace="fragments/editBon::#tankItem"></td>
                 </tr>
             </tbody>
         </table>
         <div class="btnFooter">
             <button type="button" id="btnEdit" class="btn btn-success " disabled="true">Bearbeiten</button>
-            <button type="button" class="btn btn-danger " disabled="true">Löschen</button>
+            <button type="button" class="btn btn-danger " disabled="true" onclick="deleteById()">Löschen</button>
         </div>
     </div>
 

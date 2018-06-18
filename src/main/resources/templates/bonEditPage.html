@@ -24,9 +24,28 @@
                 return "|"
             }
         };
-        $('*').on('hidden.bs.collapse', function(){
-            $('.btn').prop('disabled', true);
+        var targetId = '';
+        $('*').on('shown.bs.collapse', function (event) {
+            console.log('data: ' + $(this).next().toString());
+            this.targetId = event.target.id;
+            $('#' + event.target.id).addClass('deleteSelected');
+            console.log("TargetId: " + this.targetId);
+            $('.btn').prop('disabled', false);
         });
+        $('*').on('hidden.bs.collapse', function (event) {
+            $('.btn').prop('disabled', true);
+            this.targetId = '';
+            console.log("targetId: " + this.targetId);
+            $('.deleteSelected').removeClass('deleteSelected');
+        });
+        function deleteById() {
+            var id = $('.deleteSelected').prop('id').toString().slice('collapsedContent'.length);
+            console.log('id: ' + id);
+            $('.deleteSelected').parent().parent().remove();
+            $('.btn').prop('disabled', true);
+            var anzahlBons = $('.badge-success').text();
+            $('.badge-success').text(anzahlBons - 1);
+        }
     </script>
 </head>
 
@@ -41,27 +60,8 @@
     </div>
 
 
-
     <script src="js/bootstrap.js" />
     <script>
-        var monate = [];
-        function getMonat(month) {
-            if (monate.indexOf(month) == -1) {
-                monate.push(month);
-                return month;
-            } else {
-                return "|"
-            }
-        }
-
-        $('.tankItem').focus(function(){
-            console.log('disabled');
-            $('.btn').prop('disabled', false);
-        });
-
-        $('.tankItem').focusout(function(){
-            $('.btn').prop('disabled', true);
-        });
 
     </script>
 </body>
