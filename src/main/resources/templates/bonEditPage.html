@@ -1,32 +1,69 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
-    <link rel="stylesheet" href="css/bootstrap.css"/>
-    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="js/jquery.js" />
     <style>
         html,
         body {
             height: 100%;
             width: 100%;
         }
-
     </style>
+    <script type="text/javascript">
+        var monate = [];
+        function getMonat(month) {
+            if (monate.indexOf(month) == -1) {
+                monate.push(month);
+                return month;
+            } else {
+                return "|"
+            }
+        };
+        $('*').on('hidden.bs.collapse', function(){
+            $('.btn').prop('disabled', true);
+        });
+    </script>
 </head>
+
 <body>
 
-<div class="container">
-    <div th:replace="header::#meinHeader"/>
-    <div id="zweite" class="row zweite">
-        <div th:replace="sidebar::#zweite"/>
-        <div th:replace="fragments/editBon::#editContent" ></div>
+    <div class="container">
+        <div th:replace="header::#meinHeader" />
+        <div id="zweite" class="row zweite">
+            <div th:replace="sidebar::#zweite" />
+            <div th:replace="fragments/editBon::#editContent"></div>
+        </div>
     </div>
-</div>
 
 
-<script src="js/jquery.js"/>
-<script src="js/bootstrap.js"/>
+
+    <script src="js/bootstrap.js" />
+    <script>
+        var monate = [];
+        function getMonat(month) {
+            if (monate.indexOf(month) == -1) {
+                monate.push(month);
+                return month;
+            } else {
+                return "|"
+            }
+        }
+
+        $('.tankItem').focus(function(){
+            console.log('disabled');
+            $('.btn').prop('disabled', false);
+        });
+
+        $('.tankItem').focusout(function(){
+            $('.btn').prop('disabled', true);
+        });
+
+    </script>
 </body>
+
 </html>

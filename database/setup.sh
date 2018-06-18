@@ -6,7 +6,7 @@ host=127.0.0.1
 user=postgres
 port=5432
 
-container=$(docker run -d -p $port:5432 postgres_2_scripts:dev) 
+container=$(docker run -d -p $port:5432 postgres_with_scripts:latest) 
 # postgres_create_db_scripts)
 echo $container
 sleep 5

@@ -1,4 +1,8 @@
 
+table td, table th {
+  padding: 0rem !important;
+  border-style: none !important;
+}
 .mycontainer {
   background-color: #062456;
   border: 2px;
@@ -85,7 +89,8 @@
     height: 3rem;
     margin: 5px;
 }
-#tankItem:hover {
+#tankItem > a:hover {
+    border: 2px solid black;
     text-decoration: none;
     color: black;
 }
@@ -120,7 +125,6 @@
     margin-right: 15px;
 }
 .editÜberschriftenZeile {
-    border-bottom: 2px solid grey;
     width: 100%;
     display: flex;
     justify-content: center;

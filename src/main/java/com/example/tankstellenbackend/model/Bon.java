@@ -99,6 +99,10 @@ public class Bon {
         return id;
     }
 
+    public String getMonat(){
+        return this.datum.getMonth().toString();
+    }
+
     public void setId(){
         this.id = UUID.randomUUID();
     }

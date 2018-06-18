@@ -1,42 +1,83 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-    <body>
+<head>
+    <script type="text/javascript">
+        var monate = [];
+        function getMonat(month) {
+            if (monate.indexOf(month) == -1) {
+                monate.push(month);
+                return month;
+            } else {
+                return "|"
+            }
+        };
 
-        <div id="editContent" class="col-lg-9 bearbeiten" >
-            <div class="editÜberschriftenZeile">
-                <h3 class="editÜberschrift">Bonübersicht
-                    <span class="badge badge-success" th:text="${bons.size()}" />
-                </h3>
-            </div>
-            <div th:each="bon:${bons}">
-                <div th:replace="fragments/editBon::#tankItem" ></div>
-            </div>
-            <div class="btnFooter">
-                <button type="button" id="btnEdit" class="btn btn-success disabled">Bearbeiten</button>
-                <button type="button" class="btn btn-danger">Löschen</button>
-            </div>
+    </script>
+
+</head>
+
+<body>
+
+    <div id="editContent" class="col-lg-9 bearbeiten">
+        <div class="editÜberschriftenZeile">
+            <h3 class="editÜberschrift">Bonübersicht
+                <span class="badge badge-success" th:text="${bons.size()}" />
+            </h3>
         </div>
+        <table class="table table-stripped">
+            <tbody>
+                <tr th:each="bon:${bons}">
 
-        <div id="tankItem">
-            <a  class="tankItem"  data-toggle="collapse" aria-expanded="false" th:attr="aria-controls='collapsedContent' + ${bon.id}, href='#collapsedContent' + ${bon.id}">
-                <div class="ersterTeil ausrichtung">
-                    <img class="img-fluid" th:src="${'/imgs/' + bon.tankstellenName + '.png'}"/>
-                </div>
-                <div class="zweiterTeil ausrichtung">
-                    <h5 th:text="${bon.datum}"/>
-                </div>
-                <div class="dritterTeil ausrichtung">
-                    <h5 th:text="${bon.endPreis}"/>
-                </div>
-            </a>
-            <div th:attr="id='collapsedContent' + ${bon.id}"  class="collapse meinCollapsedContent">
-                benzinpreis: 1.29€
-                Tankvolumen: 40l
-            </div>
+                    <th scope="row" th:attr="id=${bon.getId()}">
+
+                    </th>
+                    <script th:inline="javascript">
+
+                            var idprefix = '#';
+                            var id = /*[[${bon.getId().toString()}]]*/;
+                            var monat = /*[[${bon.getMonat()}]]*/
+                            var result = getMonat(monat);
+                            $(idprefix+id).text(result);
+                        </script>
+                    <td th:replace="fragments/editBon::#tankItem"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="btnFooter">
+            <button type="button" id="btnEdit" class="btn btn-success " disabled="true">Bearbeiten</button>
+            <button type="button" class="btn btn-danger " disabled="true">Löschen</button>
         </div>
+    </div>
 
+    <td id="tankItem">
+        <a class="tankItem" data-toggle="collapse" aria-expanded="false" th:attr="aria-controls='collapsedContent' + ${bon.id}, href='#collapsedContent' + ${bon.id}">
+            <div class="ersterTeil ausrichtung">
+                <img class="img-fluid" th:src="${'/imgs/' + bon.tankstellenName + '.png'}" />
+            </div>
+            <div class="zweiterTeil ausrichtung">
+                <h5 th:text="${bon.datum}" />
+            </div>
+            <div class="dritterTeil ausrichtung">
+                <h5 th:text="${bon.endPreis}" />
+            </div>
+        </a>
+        <div th:attr="id='collapsedContent' + ${bon.id}" class="collapse meinCollapsedContent">
+            benzinpreis: 1.29€ Tankvolumen: 40l
+        </div>
+    </td>
 
-    </body>
+    <script>
+        var monate = [];
+        function getMonat(month) {
+            if (monate.indexOf(month) == -1) {
+                monate.push(month);
+                return month;
+            } else {
+                return "|"
+            }
+        };
+    </script>
+</body>
 
 </html>
