@@ -39,7 +39,7 @@
     </div>
 
     <td id="tankItem">
-        <a class="tankItem" data-toggle="collapse" aria-expanded="false" th:attr="aria-controls='collapsedContent' + ${bon.id}, href='#collapsedContent' + ${bon.id}">
+        <a class="tankItem" data-toggle="collapse" aria-expanded="false" th:attr="href='#collapsedContent' + ${bon.getId()}" >
             <div class="ersterTeil ausrichtung">
                 <img class="img-fluid" th:src="${'/imgs/' + bon.tankstellenName + '.png'}" />
             </div>
@@ -47,11 +47,15 @@
                 <h5 th:text="${bon.datum}" />
             </div>
             <div class="dritterTeil ausrichtung">
-                <h5 th:text="${bon.endPreis}" />
+                <h5 th:text="${bon.endPreis} + ' €'" />
             </div>
         </a>
-        <div th:attr="id='collapsedContent' + ${bon.id}" class="collapse meinCollapsedContent">
-            benzinpreis: 1.29€ Tankvolumen: 40l
+        <div th:attr="id='collapsedContent' + ${bon.getId()}"  class="meinCollapsedContent collapse">
+            <span style="font-weight:bold;" >Benzinpreis:</span>
+            <span style="font-weight:bold;"  th:text="${bon.benzinPreis} + ' €'" class="float-right"></span>
+            <br/>
+            <span style="font-weight:bold;" >Tankvolumen:</span>
+            <span style="font-weight:bold;" th:text="${bon.tankVolumen} + ' l'" class="float-right"></span>
         </div>
     </td>
 

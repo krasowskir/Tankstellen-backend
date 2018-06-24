@@ -88,14 +88,15 @@ table td, table th {
     border-radius: 4px;
     height: 3rem;
     margin: 5px;
+    margin-bottom: 0px;
 }
 #tankItem > a:hover {
     border: 2px solid black;
     text-decoration: none;
     color: black;
 }
-#tankItem:focus {
-    border: 5px solid pink;
+.tankItem:focus {
+    border: 2px solid black;
 }
 .ersterTeil {
     width: 50px;
@@ -133,6 +134,12 @@ table td, table th {
 }
 .meinCollapsedContent {
     margin: 5px;
+    margin-top: 0px;
     background-color: #e5e6e8;
+    padding: 5px;
+    padding-top: 0px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
+
 
