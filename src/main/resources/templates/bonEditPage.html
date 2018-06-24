@@ -45,6 +45,7 @@
             $('.btn').prop('disabled', true);
             var anzahlBons = $('.badge-success').text();
             $('.badge-success').text(anzahlBons - 1);
+            $.post("http://localhost:8080/bons/bon/" + id);
         }
     </script>
 </head>

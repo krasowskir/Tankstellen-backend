@@ -44,13 +44,6 @@ public class MyBonService implements BonService{
     @Transactional(readOnly = true)
     @Override
     public Bon findById(UUID id) throws NotFoundException {
-        Bon bon = bonRepository.findOne(id.toString());
-        if (bon == null) throw new NotFoundException();
-        return bon;
-    }
-
-    @Transactional(readOnly = true)
-    public Bon findById(String id) throws NotFoundException {
         Bon bon = bonRepository.findOne(id);
         if (bon == null) throw new NotFoundException();
         return bon;
@@ -59,7 +52,7 @@ public class MyBonService implements BonService{
     @Transactional(rollbackFor = NotFoundException.class)
     @Override
     public Bon update(Bon bon) throws NotFoundException {
-        Bon found = findById(bon.getId().toString());
+        Bon found = findById(bon.getId());
         if (found == null) throw new NotFoundException();
         found.setBenzinPreis(bon.getBenzinPreis());
         found.setDatum(bon.getDatum());
