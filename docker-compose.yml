@@ -1,0 +1,15 @@
+version: '3'
+services:
+  tankstellens:
+    build: tankstellens
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+  postgres:
+    build: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - /var/postgres/data:/var/lib/postgresql/data
+
